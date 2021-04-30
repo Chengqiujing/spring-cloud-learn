@@ -1,0 +1,27 @@
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  cloud:
+    gateway:
+      routes:
+        - id: add_header
+          uri: http://localhost:8080
+          predicates:
+            - After=2020-01-20T17:42:47.789+08:00[Asia/Shanghai]
+          #            - Path=/foo/**
+          filters:
+            #            - AddRequestHeader=aaa, bbb
+            #            - RewritePath=/foo/(?<segment>.*), /$\{segment}
+            #            - RequestTime=true
+            - name: RequestRateLimiter
+              args:
+                # 用于限流的键的解析器的Bean对象的名字.它使用SpEL表达式.根据#{@beanName}从Spring容器中获取Bean对象.
+                Key-resolver: "#{@hostAddrKeyResolver}"
+                # 令牌桶每秒的平均填充速率
+                redis-rate-limiter.replenishRate: 1
+                # 令牌桶总容量
+                redis-rate-limiter.burstCapcity: 3
+

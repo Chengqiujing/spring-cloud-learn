@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: consul-config
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+        prefix: configuration
+        defaultContext: apps
+        profileSeparator: '::'
+        format: yaml
+        data-key: dd
+
+
+

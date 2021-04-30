@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: config-client-available
+  cloud:
+    config:
+      #      uri: http://localhost:8769
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config-server-avaible
+  profiles:
+    active: dev
+

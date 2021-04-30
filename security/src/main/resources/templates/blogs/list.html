@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Spring Security</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}">
+</head>
+<body>
+<table border="1" width="30%">
+
+    <tr th:each="entry:${blogsList}">
+        <td th:text="${entry.id}"></td>
+        <td th:text="${entry.name}"></td>
+        <td th:text="${entry.content}"></td>
+        <td><a th:href="|/blogs/${entry.id}/deletion|">删除</a></td>
+    </tr>
+</table>
+</body>
+</html>

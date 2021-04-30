@@ -1,0 +1,41 @@
+#server.port=8083
+#spring.application.name=feign-client
+#eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+## feign\u5F00\u542F\u81EA\u5E26\u7684hystrix
+#feign.hystrix.enabled=true
+## \u5F00\u542Factuator\u7684\u90E8\u5206\u5065\u5EB7\u5185\u5BB9,\u6216\u8005*\u5168\u5F00
+#management.endpoints.web.exposure.include=hystrix.stream,info,health
+
+server:
+  port: 8083
+spring:
+  application:
+    name: feign-client
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1.0
+  rabbitmq:
+    host: localhost
+    username: admin
+    password: admin
+    port: 5672
+  #  zipkin:
+  #    base-url: http://localhost:9411 # zipkin server
+  zipkin:
+    sender:
+      type: rabbit
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream,info,health

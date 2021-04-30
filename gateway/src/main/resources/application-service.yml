@@ -1,0 +1,22 @@
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false  # 开启服务发现
+          lower-case-service-id: true # 将请求路径上的服务名配置为小写
+      routes:
+        - id: eureka-client
+          uri: lb://EUREKA-CLIENT
+          predicates:
+            - Path=/foo/** # 符合/foo开头的路径,都进行映射
+          filters:
+            - StripPrefix=1 # 去掉/foo前缀,然后转发
+
+

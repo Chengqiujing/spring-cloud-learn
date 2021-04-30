@@ -1,0 +1,29 @@
+#server.port=8080
+#spring.application.name=eureka-client
+#eureka.client.service-url.default-zone=http://localhost:8761/eureka/
+
+server:
+  port: 8080
+spring:
+  application:
+    name: eureka-client
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1.0 # log collect percentage 1.0 is 100%
+  #  zipkin:
+  #    base-url: http://localhost:9411/ # zipkin server host
+  zipkin:
+    sender:
+      type: rabbit
+  rabbitmq:
+    host: localhost
+    username: admin
+    password: admin
+    port: 5672
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
