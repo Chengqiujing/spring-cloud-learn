@@ -6567,7 +6567,7 @@ Spring OAuth2分为两部分，两部分包含对各个角色的实现
 
 **》》》Authorization Server**：通过@EnableAuthorizationServer
 
-- AuthorizationServerEndpointsConfigure：客户端信息（Provider - 1）
+- ClientDetailsServiceConfigurer：客户端信息（Provider - 1）
   - clientId：客户端的id
   - secret：客户端的密码
   - scope：客户端的域
